@@ -4,7 +4,7 @@ export const RepositoryList = ({repositories}) => (
   <div className={box}>
     {repositories && (
       repositories.map(item => (
-        <RepositoryDetails item={item} />
+        <RepositoryDetails key={item.id} item={item} />
       ))
     )}
   </div>

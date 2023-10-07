@@ -13,7 +13,7 @@ export const App = () => {
 
   const { data } = useGetUsersQuery(debounced, {skip: debounced.length < 1});
   const { data: repositories } = useGetRepositoriesQuery(user, {skip: user.length < 1});
-  const [pages, setPages] = useState((Math.ceil(repositories?.length / 10)));
+  const [pages, setPages] = useState(0);
 
   const pagginationRepositories = repositories?.filter((item, index) => {
     return index <= ((page - 1) * 10 + 10) && index >= (page * 10 - 10);
@@ -27,6 +27,7 @@ export const App = () => {
     <div className={box}>
       <SearchBar 
         data={data?.items}
+        user={user}
         setUser={setUser}
         setSearch={setSearch}
         search={search}

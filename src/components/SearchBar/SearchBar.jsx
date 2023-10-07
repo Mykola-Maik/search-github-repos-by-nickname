@@ -4,7 +4,9 @@ export const SearchBar = ({
   setSearch,
   search,
   setUser,
-  data
+  data,
+  user,
+  ...props
 }) => {
   const submenuClickHandler = (item) => {
     setUser(item.login);
@@ -14,11 +16,12 @@ export const SearchBar = ({
   return (
     <div className={box}>
       <TextField 
-        fullHeight
+        // fullHeight
         label="Nickname"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         size="medium"
+        {...props}
       />
   
       {data && search !== '' && (
@@ -26,7 +29,8 @@ export const SearchBar = ({
           {data.map(item => (
             <div 
               className={subMenuItem}
-              onClick={submenuClickHandler(item)}
+              key={item.id}
+              onClick={() => submenuClickHandler(item)}
             >
               {item.login}
             </div>

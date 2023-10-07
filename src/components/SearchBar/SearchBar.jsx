@@ -16,8 +16,8 @@ export const SearchBar = ({
   return (
     <div className={box}>
       <TextField 
-        // fullHeight
         label="Nickname"
+        placeholder="Enter github nickname"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         size="medium"
